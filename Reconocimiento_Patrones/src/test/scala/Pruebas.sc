@@ -1,6 +1,7 @@
 import Newton._
 
 //Pruebas para la funcion comparar
+Atomo('x')
 val expr1 = Suma(Atomo('x'), Numero(2))
 val expr2 = Prod(Atomo('x'), Atomo('x'))
 val expr3 = Suma(expr1, Expo(expr2, Numero(5)))
@@ -14,3 +15,8 @@ val res3: String = mostrar(expr3)
 val res4: String = mostrar(expr4)
 val res5: String = mostrar(expr5)
 val res6: String = mostrar(expr6)
+
+mostrar(derivar(expr6, Atomo('x')))
+mostrar(derivar(expr2, Atomo('x')))
+mostrar(derivar(expr2, Atomo('y')))
+mostrar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
