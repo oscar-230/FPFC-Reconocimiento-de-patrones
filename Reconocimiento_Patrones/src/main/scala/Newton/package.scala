@@ -38,9 +38,21 @@ package object Newton {
     }
   }
 
-  /*
-  def evaluar(f :Expr, a:Atomo, v:Double):Double ={
 
+  def evaluar(f :Expr, a:Atomo, v:Double):Double ={
+    f match {
+      case Numero(d) => d
+      case Atomo(x) if x == a.x => v
+      case Suma(e1, e2) => evaluar(e1, a, v) + evaluar(e2, a, v)
+      case Resta(e1, e2) => evaluar(e1, a, v) - evaluar(e2, a, v)
+      case Prod(e1, e2) => evaluar(e1, a, v) * evaluar(e2, a, v)
+      case Div(e1, e2) => evaluar(e1, a, v) / evaluar(e2, a, v)
+      case Expo(e1, e2) => Math.pow(evaluar(e1, a, v), evaluar(e2, a, v))
+      case Logaritmo(e1) => Math.log(evaluar(e1, a, v))
+    }
+  }
+
+/*
   }
   def limpiar(f :Expr):Expr = {
 
