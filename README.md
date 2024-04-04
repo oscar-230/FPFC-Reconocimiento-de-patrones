@@ -62,7 +62,7 @@ val res5: String = "(((x + 2.0) / (x * x)) * (((x + 2.0) + ((x * x) ^ 5.0)) - (l
 val res6: String = "(x ^ 3.0)"
 ```
 ## 1.2 Derivando expresiones
-Implemente una función `derivar` que dada una función representada por la expresión `f` y un átomo `a` (que representa la variable de la función), retorne la expresión correspondiente a su derivada con respecto a esa variable; todos los demas atomos de f deben ser considerados como constantes.
+Implemente una función `derivar` que dada una función representada por la expresión `f` y un átomo `a` (que representa la variable de la función), retorne la expresión correspondiente a su derivada con respecto a esa variable; todos los demás átomos de f deben ser considerados como constantes.
 ```scala
 def derivar(f: Expr, a: Atomo): Expr = {...}
 ```
