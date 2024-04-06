@@ -1,7 +1,6 @@
 import Newton._
 
 //Pruebas para la funcion comparar
-Atomo('x')
 val expr1 = Suma(Atomo('x'), Numero(2))
 val expr2 = Prod(Atomo('x'), Atomo('x'))
 val expr3 = Suma(expr1, Expo(expr2, Numero(5)))
@@ -39,3 +38,10 @@ mostrar(Expo(expr1, expr2))
 evaluar(Expo(expr1, expr2), Atomo('x'), 5.0)
 mostrar(Logaritmo(expr1))
 evaluar(Logaritmo(expr1), Atomo('x'), 5.0)
+
+//Pruebas para la funcion limpiar
+limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
+mostrar(limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x'))))
+
+val res26: Expr = limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
+val res27: String = mostrar(res26)

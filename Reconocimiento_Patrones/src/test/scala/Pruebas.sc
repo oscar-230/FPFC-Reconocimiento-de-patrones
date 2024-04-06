@@ -38,3 +38,7 @@ mostrar(Expo(expr1, expr2))
 evaluar(Expo(expr1, expr2), Atomo('x'), 5.0)
 mostrar(Logaritmo(expr1))
 evaluar(Logaritmo(expr1), Atomo('x'), 5.0)
+
+//Pruebas para la funcion limpiar
+limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
+mostrar(limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x'))))
