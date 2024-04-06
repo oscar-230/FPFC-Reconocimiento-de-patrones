@@ -42,3 +42,29 @@ evaluar(Logaritmo(expr1), Atomo('x'), 5.0)
 //Pruebas para la funcion limpiar
 limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
 mostrar(limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x'))))
+
+limpiar(Suma(Numero(0.0), Prod(Numero(1.0), Atomo('x'))))
+mostrar(limpiar(Suma(Numero(0.0), Prod(Numero(1.0), Atomo('x')))))
+
+limpiar(Suma(Numero(0.0), Numero(0.0)))
+mostrar(limpiar(Suma(Numero(0.0), Numero(0.0))))
+
+limpiar(Prod(Numero(1.0), Atomo('y')))
+mostrar(limpiar(Prod(Numero(1.0), Atomo('y'))))
+
+limpiar(Div(Atomo('z'), Numero(1.0)))
+mostrar(limpiar(Div(Atomo('z'), Numero(1.0))))
+
+limpiar(Logaritmo(Numero(1.0)))
+mostrar(limpiar(Logaritmo(Numero(1.0))))
+
+limpiar(Suma(Prod(Atomo('z'), Expo(Numero(1.0), Numero(3.0))), Numero(0.0)))
+mostrar(limpiar(Suma(Prod(Atomo('z'), Expo(Numero(1.0), Numero(3.0))), Numero(0.0))))
+
+limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0))))
+mostrar(limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0)))))
+
+
+
+
+
