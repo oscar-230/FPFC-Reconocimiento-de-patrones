@@ -1,4 +1,4 @@
-# FPFC-Reconocimiento-de-patrones
+# FPFC-Taller #3 Reconocimiento de patrones
 ## 1. Ejercicios de programación: Método de Newton
 
 El objetivo de este ejercicio es implementar el método de Newton para hallar raíces de una función cualquiera. Una función estará representada por una expresión construida a partir de un trait denominado `Expr` definido así:
@@ -125,4 +125,48 @@ val res22: String = "((x + 2.0) ^ (x * x))"
 val res23: Double = 1.341068619663965E21
 val res24: String = "lg((x + 2.0))"
 val res25: Double = 1.9459101490553132
+```
+## 1.4. Limpiando expresiones
+Implemente una función limpiar que dada una función representada por la expresión `f`, retorne una fórmula equivalente pero que no contenga ceros ni unos innecesarios.
+```scala
+def limpiar(f: Expr): Expr = {...}
+```
+Por ejemplo, a las siguientes invocaciones:
+```scala
+limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
+mostrar(limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x'))))
+```
+la función responde así:
+```scala
+val res26: Newton.Expr = Numero(3.0)
+val res27: String = 3.0
+```
+## 1.5. Hallando raíces
+Implementa una función iterativa `raizNewton` que, dada una función representada por la expresión `f`, un átomo `a` (que representa la variable de la función), un valor flotante `x0` candidato a raíz de `f`, y una función booleana `ba`, retorne una raíz, `r`, de la función usando el método de Newton. (`ba` es una función que recibe la expresión `f`, el átomo `a` y el valor candidato a raíz, `x0`, y devuelve true si `f(x0)` está suficientemente cerca de 0).
+```scala
+def raizNewton(f: Expr, a: Atom, x0: Double, ba: (Expr, Atom, Double) => Boolean): Double = {...}
+```
+Por ejemplo, a las siguientes invocaciones:
+```scala
+def buenaAprox(f: Expr, a: Atom, d: Double): Boolean = {
+  evaluar(f, Map(a -> Numero(d))) < 0.001
+}
+
+val e1 = Resta(Prod(Atomo('x'), Atomo('x')), Numero(2.0))
+val e2 = Resta(Prod(Atomo('x'), Atomo('x')), Numero(4.0))
+val e3 = Suma(Resta(Prod(Atomo('x'), Atomo('x')), Numero(4.0)), Prod(Numero(3.0), Atomo('x')))
+raizNewton(e1, Atomo('x'), 2.0, buenaAprox)
+raizNewton(e2, Atomo('x'), 2.0, buenaAprox)
+raizNewton(e3, Atomo('x'), 2.0, buenaAprox)
+```
+La función responde así:
+```scala
+def buenaAprox(f: Newton.Expr, a: Newton.Atomo, d: Double): Boolean
+
+val e1: Newton.Resta = Resta(Prod(Atomo(x), Atomo(x)), Numero(2.0))
+val e2: Newton.Resta = Resta(Prod(Atomo(x), Atomo(x)), Numero(4.0))
+val e3: Newton.Suma = Suma(Resta(Prod(Atomo(x), Atomo(x)), Numero(4.0)), Prod(Numero(3.0), Atomo(x)))
+val res28: Double = 1.4142156862745099
+val res29: Double = 2.0
+val res30: Double = 1.0000029768726761
 ```
