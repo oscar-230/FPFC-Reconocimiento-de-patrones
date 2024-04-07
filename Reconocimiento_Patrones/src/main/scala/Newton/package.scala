@@ -89,11 +89,21 @@ package object Newton {
     }
   }
 
+  
+  def raizNewton(f: Expr, a: Atomo, x0: Double, ba: (Expr, Atomo, Double) => Boolean): Double = {
+    def iterar(xn: Double): Double = {
+      val fxn = evaluar(f, a, xn)
+      val derf = derivar(f, a)
+      val derfxn = evaluar(derf, a, xn)
+      val xn1 = xn - fxn / derfxn
 
-  /*
-  def raizNewton(f :Expr, a:Atomo, x0:Double, ba:(Expr, Atomo, Double)=>Boolean):Double ={
+      (f, a, xn) match {
+        case (f, a, xn) if ba(f, a, xn) => xn
+        case _ => iterar(xn1)
+      }
+    }
 
+    iterar(x0)
   }
-  */
 
 }
