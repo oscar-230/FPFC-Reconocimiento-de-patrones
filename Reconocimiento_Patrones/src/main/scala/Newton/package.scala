@@ -45,7 +45,8 @@ package object Newton {
   def evaluar(f: Expr, a: Atomo, v: Double): Double = {
     f match {
       case Numero(d) => d
-      case Atomo(x) if x == a.x => v
+      case Atomo(x) => if (x == a.x) v else Double.NaN
+      //case Atomo(x) if x == a.x => v
       case Suma(e1, e2) => evaluar(e1, a, v) + evaluar(e2, a, v)
       case Resta(e1, e2) => evaluar(e1, a, v) - evaluar(e2, a, v)
       case Prod(e1, e2) => evaluar(e1, a, v) * evaluar(e2, a, v)
@@ -92,7 +93,7 @@ package object Newton {
     }
   }
 
-  
+
   def raizNewton(f: Expr, a: Atomo, x0: Double, ba: (Expr, Atomo, Double) => Boolean): Double = {
     @tailrec
     def iterar(xn: Double): Double = {
@@ -106,8 +107,6 @@ package object Newton {
         case _ => iterar(xn1)
       }
     }
-
     iterar(x0)
   }
-
 }
