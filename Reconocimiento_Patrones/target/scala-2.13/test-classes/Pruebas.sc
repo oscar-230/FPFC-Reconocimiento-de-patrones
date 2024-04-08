@@ -43,5 +43,41 @@ evaluar(Logaritmo(expr1), Atomo('x'), 5.0)
 limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
 mostrar(limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x'))))
 
-val res26: Expr = limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
-val res27: String = mostrar(res26)
+limpiar(Suma(Numero(0.0), Prod(Numero(1.0), Atomo('x'))))
+mostrar(limpiar(Suma(Numero(0.0), Prod(Numero(1.0), Atomo('x')))))
+
+limpiar(Suma(Numero(0.0), Numero(0.0)))
+mostrar(limpiar(Suma(Numero(0.0), Numero(0.0))))
+
+limpiar(Prod(Numero(1.0), Atomo('y')))
+mostrar(limpiar(Prod(Numero(1.0), Atomo('y'))))
+
+limpiar(Div(Atomo('z'), Numero(1.0)))
+mostrar(limpiar(Div(Atomo('z'), Numero(1.0))))
+
+limpiar(Logaritmo(Numero(1.0)))
+mostrar(limpiar(Logaritmo(Numero(1.0))))
+
+limpiar(Suma(Prod(Atomo('z'), Expo(Numero(1.0), Numero(3.0))), Numero(0.0)))
+mostrar(limpiar(Suma(Prod(Atomo('z'), Expo(Numero(1.0), Numero(3.0))), Numero(0.0))))
+
+limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0))))
+mostrar(limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0)))))
+
+//pruebas para la función raizNewton
+val e1 = Resta(Prod(Atomo('x'), Atomo('x')), Numero(2.0))
+val e2 = Resta(Prod(Atomo('x'), Atomo('x')), Numero(4.0))
+val e3 = Suma(Resta(Prod(Atomo('x'), Atomo('x')), Numero(4.0)), Prod(Numero(3.0), Atomo('x')))
+
+def buenaAprox(f: Expr, a: Atomo, d: Double): Boolean = {
+  evaluar(f, a, d) < 0.001 // Cambia el valor según la precisión deseada
+}
+
+raizNewton(e1, Atomo('x'), 2.0, buenaAprox)
+raizNewton(e2, Atomo('x'), 2.0, buenaAprox)
+raizNewton(e3, Atomo('x'), 2.0, buenaAprox)
+
+
+
+
+

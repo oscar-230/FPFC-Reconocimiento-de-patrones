@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 package object Newton {
   trait Expr
   case class Numero(d: Double) extends Expr
@@ -91,6 +93,7 @@ package object Newton {
 
   
   def raizNewton(f: Expr, a: Atomo, x0: Double, ba: (Expr, Atomo, Double) => Boolean): Double = {
+    @tailrec
     def iterar(xn: Double): Double = {
       val fxn = evaluar(f, a, xn)
       val derf = derivar(f, a)
