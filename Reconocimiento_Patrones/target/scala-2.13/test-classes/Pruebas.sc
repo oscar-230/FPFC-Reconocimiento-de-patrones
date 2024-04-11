@@ -50,6 +50,10 @@ mostrar(derivar(expr8, Atomo('x')))//((0 * 2) -(10 * 0)) / (2 ^ 2)
 mostrar(derivar(expr15, Atomo('x')))// ((2 ^ 3) * ((0 * lg(2)) + ((3 / 2) * 0))) * x) + ((2 ^ 3) * 1))
 mostrar(derivar(expr17, Atomo('x')))// (0 * (x - 1) + (y * (1 - 0))
 mostrar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))// (0 + ((0 * x) + (3 * 1)))
+mostrar(derivar(expr10, Atomo('x')))
+mostrar(derivar(expr4, Atomo('x')))
+mostrar(derivar(expr17, Atomo('y')))
+mostrar(derivar(expr18, Atomo('x')))
 
 //pruebas para la funcion evaluar
 mostrar(Atomo('k'))

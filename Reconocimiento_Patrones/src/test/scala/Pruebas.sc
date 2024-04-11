@@ -50,6 +50,10 @@ mostrar(derivar(expr8, Atomo('x')))//((0 * 2) -(10 * 0)) / (2 ^ 2)
 mostrar(derivar(expr15, Atomo('x')))// ((2 ^ 3) * ((0 * lg(2)) + ((3 / 2) * 0))) * x) + ((2 ^ 3) * 1))
 mostrar(derivar(expr17, Atomo('x')))// (0 * (x - 1) + (y * (1 - 0))
 mostrar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))// (0 + ((0 * x) + (3 * 1)))
+mostrar(derivar(expr10, Atomo('x')))// ((x * 4) ^ 2) * ((0 * lg((x * 4))) + ((2 / (x * 4)) * ((1 * 4) + (x * 0))))
+mostrar(derivar(expr4, Atomo('x')))// 1/x
+mostrar(derivar(expr17, Atomo('y')))// ((1 * (x - 1)) + (y * (0 - 0))
+mostrar(derivar(expr18, Atomo('x')))// (((((0 * x) + (3 * 1)) * (1 + x)) - ((3 * x) * (0 + 1))) / ((1 + x) ^ 2))
 
 //pruebas para la funcion evaluar
 mostrar(Atomo('k'))
@@ -98,6 +102,19 @@ mostrar(limpiar(Suma(Prod(Atomo('z'), Expo(Numero(1.0), Numero(3.0))), Numero(0.
 
 limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0))))// a + 1
 mostrar(limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0)))))
+
+limpiar(derivar(expr6, Atomo('x'))) // (x^3)*(3/x)
+mostrar(limpiar(derivar(expr6, Atomo('x'))))
+
+limpiar(derivar(expr15, Atomo('x'))) // 2^3
+mostrar(limpiar(derivar(expr15, Atomo('x'))))
+
+limpiar(derivar(expr17, Atomo('x'))) // y
+mostrar(limpiar(derivar(expr17, Atomo('x'))))
+
+limpiar(derivar(expr18, Atomo('x'))) //(3*(1+x)-(3*x))/(1-x)^2
+mostrar(limpiar(derivar(expr18, Atomo('x'))))
+
 
 //pruebas para la función raizNewton
 val e1 = Resta(Prod(Atomo('x'), Atomo('x')), Numero(2.0))
