@@ -41,57 +41,56 @@ val res18: String = mostrar(expr18)// ((3 * x) / (1 + x))
 
 
 //pruebas para la funcion derivar
-mostrar(derivar(expr6, Atomo('x')))
-mostrar(derivar(expr2, Atomo('x')))
-mostrar(derivar(expr2, Atomo('y')))
-mostrar(derivar(expr8, Atomo('x')))
-mostrar(derivar(expr15, Atomo('x')))
-mostrar(derivar(expr17, Atomo('x')))
-mostrar(derivar(expr18, Atomo('x')))
-mostrar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
+mostrar(derivar(expr6, Atomo('x')))// (x ^ 3) * ( 0 * lg(x)) + ((3/x) * 1)
+mostrar(derivar(expr2, Atomo('x')))// (1 * x) + (x * 1)
+mostrar(derivar(expr2, Atomo('y')))// (0 * x) + (x * 0)
+mostrar(derivar(expr8, Atomo('x')))//((0 * 2) -(10 * 0)) / (2 ^ 2)
+mostrar(derivar(expr15, Atomo('x')))// ((2 ^ 3) * ((0 * lg(2)) + ((3 / 2) * 0))) * x) + ((2 ^ 3) * 1))
+mostrar(derivar(expr17, Atomo('x')))// (0 * (x - 1) + (y * (1 - 0))
+mostrar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))// (0 + ((0 * x) + (3 * 1)))
 
 //pruebas para la funcion evaluar
 mostrar(Numero(5.0))
-evaluar(Numero(5.0), Atomo('x'), 1.0)
+evaluar(Numero(5.0), Atomo('x'), 1.0)// 5
 mostrar(Atomo('x'))
-evaluar(Atomo('x'), Atomo('x'), 5.0)
+evaluar(Atomo('x'), Atomo('x'), 5.0)// 5
 mostrar(Suma(expr1, expr2))
-evaluar(Suma(expr1, expr2), Atomo('x'), 5.0)
+evaluar(Suma(expr1, expr2), Atomo('x'), 5.0)// 32
 mostrar(Prod(expr1, expr2))
-evaluar(Prod(expr1, expr2), Atomo('x'), 5.0)
+evaluar(Prod(expr1, expr2), Atomo('x'), 5.0)// 175
 mostrar(Resta(expr1, expr2))
-evaluar(Resta(expr1, expr2), Atomo('x'), 5.0)
+evaluar(Resta(expr1, expr2), Atomo('x'), 5.0)// -18
 mostrar(Div(expr1, expr2))
-evaluar(Div(expr1, expr2), Atomo('x'), 5.0)
+evaluar(Div(expr1, expr2), Atomo('x'), 5.0)// 0.28
 mostrar(Expo(expr1, expr2))
-evaluar(Expo(expr1, expr2), Atomo('x'), 5.0)
+evaluar(Expo(expr1, expr2), Atomo('x'), 5.0)// 1.3410
 mostrar(Logaritmo(expr1))
-evaluar(Logaritmo(expr1), Atomo('x'), 5.0)
+evaluar(Logaritmo(expr1), Atomo('x'), 5.0)// 1.9459
 
 
 //Pruebas para la funcion limpiar
-limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))
+limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))// 3
 mostrar(limpiar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x'))))
 
-limpiar(Suma(Numero(0.0), Prod(Numero(1.0), Atomo('x'))))
+limpiar(Suma(Numero(0.0), Prod(Numero(1.0), Atomo('x'))))// x
 mostrar(limpiar(Suma(Numero(0.0), Prod(Numero(1.0), Atomo('x')))))
 
-limpiar(Suma(Numero(0.0), Numero(0.0)))
+limpiar(Suma(Numero(0.0), Numero(0.0)))// 0
 mostrar(limpiar(Suma(Numero(0.0), Numero(0.0))))
 
-limpiar(Prod(Numero(1.0), Atomo('y')))
+limpiar(Prod(Numero(1.0), Atomo('y')))// y
 mostrar(limpiar(Prod(Numero(1.0), Atomo('y'))))
 
-limpiar(Div(Atomo('z'), Numero(1.0)))
+limpiar(Div(Atomo('z'), Numero(1.0)))// z
 mostrar(limpiar(Div(Atomo('z'), Numero(1.0))))
 
-limpiar(Logaritmo(Numero(1.0)))
+limpiar(Logaritmo(Numero(1.0)))// lg(1)
 mostrar(limpiar(Logaritmo(Numero(1.0))))
 
-limpiar(Suma(Prod(Atomo('z'), Expo(Numero(1.0), Numero(3.0))), Numero(0.0)))
+limpiar(Suma(Prod(Atomo('z'), Expo(Numero(1.0), Numero(3.0))), Numero(0.0)))// z*(1 ^ 3)
 mostrar(limpiar(Suma(Prod(Atomo('z'), Expo(Numero(1.0), Numero(3.0))), Numero(0.0))))
 
-limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0))))
+limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0))))// a + 1
 mostrar(limpiar(Suma(Prod(Atomo('a'), Resta(Numero(1.0), Div(Numero(0.0), Atomo('b')))), Expo(Numero(2.0), Numero(0.0)))))
 
 //pruebas para la función raizNewton
