@@ -43,7 +43,7 @@ package object Newton {
   def evaluar(f: Expr, a: Atomo, v: Double): Double = {
     f match {
       case Numero(d) => d
-      case Atomo(x) if x == a.x => v
+      case Atomo(x) => if (x==a.x) v else Double.NaN // cuando la expresion no coicide con la variable no es posible evaluar
       case Suma(e1, e2) => evaluar(e1, a, v) + evaluar(e2, a, v)
       case Resta(e1, e2) => evaluar(e1, a, v) - evaluar(e2, a, v)
       case Prod(e1, e2) => evaluar(e1, a, v) * evaluar(e2, a, v)
@@ -99,8 +99,7 @@ package object Newton {
       val xn1 = xn - fxn / derfxn
 
       (f, a, xn) match {
-        case (f, a, xn) if ba(f, a, xn) => xn
-        case _ => iterar(xn1)
+        case (f, a, xn) => if (ba(f, a, xn)) xn else iterar(xn1)
       }
     }
     iterar(x0)

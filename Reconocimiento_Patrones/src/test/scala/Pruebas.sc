@@ -41,6 +41,8 @@ val res18: String = mostrar(expr18)// ((3 * x) / (1 + x))
 
 
 //pruebas para la funcion derivar
+mostrar(derivar(Atomo('x'), Atomo('x')))//1
+mostrar(derivar(Atomo('k'), Atomo('x')))//0
 mostrar(derivar(expr6, Atomo('x')))// (x ^ 3) * ( 0 * lg(x)) + ((3/x) * 1)
 mostrar(derivar(expr2, Atomo('x')))// (1 * x) + (x * 1)
 mostrar(derivar(expr2, Atomo('y')))// (0 * x) + (x * 0)
@@ -50,6 +52,10 @@ mostrar(derivar(expr17, Atomo('x')))// (0 * (x - 1) + (y * (1 - 0))
 mostrar(derivar(Suma(Atomo('k'), Prod(Numero(3.0), Atomo('x'))), Atomo('x')))// (0 + ((0 * x) + (3 * 1)))
 
 //pruebas para la funcion evaluar
+mostrar(Atomo('k'))
+evaluar(Atomo('k'), Atomo('x'),1.0)//NaN
+mostrar(Atomo('k'))
+evaluar(Atomo('k'), Atomo('k'),1.0)//1.0
 mostrar(Numero(5.0))
 evaluar(Numero(5.0), Atomo('x'), 1.0)// 5
 mostrar(Atomo('x'))
