@@ -29,9 +29,7 @@ package object Newton {
   def derivar(f: Expr, a: Atomo): Expr = {
     f match {
       case Numero(_) => Numero(0.0)
-      case Atomo(x) => if (x ==a.x) Numero(1) else Numero(0)
-      //case Atomo(x) if x == a.x => Numero(1)
-      //case Atomo(_) => Numero(0)
+      case Atomo(x) => if (x ==a.x) Numero(1.0) else Numero(0.0)
       case Suma(e1, e2) => Suma(derivar(e1, a), derivar(e2, a))
       case Resta(e1, e2) => Resta(derivar(e1, a), derivar(e2, a))
       case Prod(e1, e2) => Suma(Prod(derivar(e1, a), e2), Prod(e1, derivar(e2, a)))
@@ -45,8 +43,7 @@ package object Newton {
   def evaluar(f: Expr, a: Atomo, v: Double): Double = {
     f match {
       case Numero(d) => d
-      case Atomo(x) => if (x == a.x) v else Double.NaN
-      //case Atomo(x) if x == a.x => v
+      case Atomo(x) if x == a.x => v
       case Suma(e1, e2) => evaluar(e1, a, v) + evaluar(e2, a, v)
       case Resta(e1, e2) => evaluar(e1, a, v) - evaluar(e2, a, v)
       case Prod(e1, e2) => evaluar(e1, a, v) * evaluar(e2, a, v)
@@ -59,8 +56,7 @@ package object Newton {
 
   def limpiar(f: Expr): Expr = {
     f match {
-      case Numero(d) if d == 0.0 => Numero(0.0)
-      case Numero(d) if d == 1.0 => Numero(1.0)
+      case Numero(d) => Numero(d)
       case Suma(e1, e2) => (limpiar(e1), limpiar(e2)) match {
         case (Numero(0.0), e) => e
         case (e, Numero(0.0)) => e
